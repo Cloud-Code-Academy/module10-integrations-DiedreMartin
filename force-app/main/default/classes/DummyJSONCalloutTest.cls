@@ -116,9 +116,9 @@ public with sharing class DummyJSONCalloutTest {
 	static void testCreateContactFromJson() {
 		// JSON string that represents the response data
 		String jsonResponse = DummyJSONCalloutMockGenerator.DUMMY_JSON_USER_PAYLOAD;
-		
+		Map<String, Object> jsonData = (Map<String, Object>) JSON.deserializeUntyped(jsonResponse);
 		// Call the method
-		Contact cont = DummyJSONCallout.createContactFromJson(jsonResponse);
+		Contact cont = DummyJSONCallout.createContactFromJson(jsonData);
 
 		// Assertions to check if the Contact object was populated correctly
 		System.assertEquals('test@example.com', cont.Email, 'Email does not match.');
